@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 export const sendCookie = (user, res, message, statusCode = 200) => {
   console.log("/////////// 3 ///////////");
   const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
+  console.log("token: ", token);
   res
     .status(statusCode)
     .cookie("token", token, {
@@ -15,4 +16,6 @@ export const sendCookie = (user, res, message, statusCode = 200) => {
       success: true,
       message,
     });
+  console.log("response: ", res);
+    
 };
