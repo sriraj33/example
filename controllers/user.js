@@ -5,6 +5,7 @@ import ErrorHandler from "../middlewares/error.js";
 
 export const login = async (req, res, next) => {
   try {
+    console.log("/////////// 1 ///////////");
     const { email, password } = req.body;
 
     const user = await User.findOne({ email }).select("+password");
@@ -18,6 +19,7 @@ export const login = async (req, res, next) => {
 
     sendCookie(user, res, `Welcome back, ${user.name}`, 200);
   } catch (error) {
+    console.log("/////////// 2 ///////////");
     next(error);
   }
 };
